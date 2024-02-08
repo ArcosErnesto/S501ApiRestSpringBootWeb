@@ -41,10 +41,10 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public Optional<BranchDTO> findById(int id) {
+    public BranchDTO findById(int id) {
         Optional<Branch> branchOptional = branchRepository.findById(id);
         Branch branch = branchOptional.get();
-        return Optional.of(convertToDTO(branch));
+        return convertToDTO(branch);
     }
 
     @Override
