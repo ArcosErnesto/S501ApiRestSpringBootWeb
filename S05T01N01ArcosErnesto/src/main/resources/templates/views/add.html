@@ -1,0 +1,36 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="templates/template :: head">
+</head>
+<body>
+  <header th:replace="templates/template :: header"></header>
+  <div class="container">
+    <p> </p>
+    <form th:action="@{/views/save}" th:object="${branch}" method="post">
+      <h2 th:text="${title}"></h2>
+      <p> </p>
+      <div class="form-group">
+        <input type="hidden" th:field="*{branchId}">
+        <label for="branchName" class="form-label">Nombre de sucursal</label>
+        <input type="text" th:field="*{branchName}" class="form-control" id="branchName" placeholder="Introduzca el nombre" required>
+        <small></small>
+      </div>
+      <p> </p>
+      <div class="form-group">
+        <label for="branchCountry" class="form-label">Seleccione el país</label>
+        <select th:field="*{branchCountry}" class="form-select" id="branchCountry" required>
+          <option value="">Seleccione un país</option>
+          <option th:each="branchCountry:${countries}"
+                  th:value="${branchCountry.idCountry}"
+                  th:text="${branchCountry.countryName}">
+          </option>
+        </select>
+        <small></small>
+      </div>
+        <p> </p>
+    <button type="submit" class="btn btn-dark" value="add">Guardar</button>
+  </form>
+
+</div>
+<footer th:replace="templates/template :: footer"></footer>
+</body>
+</html>

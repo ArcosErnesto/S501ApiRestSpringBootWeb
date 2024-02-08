@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="templates/template :: head">
+</head>
+<body>
+    <header th:replace="templates/template :: header"></header>
+    <div class="container">
+        <p> </p>
+        <h2 th:text="${title}"></h2>
+        <p> </p>
+
+        <a class="btn btn-dark" th:href="@{/views/add}"
+           th:text="'Nueva Sucursal'" title="Crear Nuevo Registro">
+        </a>
+        <p> </p>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Tipo de sucursal</th>
+                <th scope="col">Actualizar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="br:${branches}">
+                <th scope="row" th:text="${br.branchId}"></th>
+                <td th:text="${br.branchName}"></td>
+                <td th:text="${br.branchCountry.countryName}"></td>
+                <td th:text="${br.branchType}"></td>
+                <td>
+                    <a class="btn btn-success btn-sm" th:href="@{/views/update/{id}(id=${br.branchId})}"
+                        th:text="Actualizar" title="Actualizar sucursal">
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-sm" th:href="@{/views/delete/{id}(id=${br.branchId})}"
+                       th:text="Eliminar" title="Eliminar sucursal"
+                       onclick="return confirm('¿Está seguro de eliminar la sucursal?')">
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <footer th:replace="templates/template :: footer">
+        <p> </p>
+    </footer>
+</body>
+</html>

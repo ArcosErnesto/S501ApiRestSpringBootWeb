@@ -1,7 +1,7 @@
 package cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.services.impl;
 
 import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.domain.Branch;
-import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.domain.BranchDTO;
+import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.dto.BranchDTO;
 import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.exception.BranchNotFoundException;
 import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.repository.BranchRepository;
 import cat.itacademy.barcelonactiva.Arcos.Ernesto.s05.t01.n01.model.services.BranchService;
@@ -41,6 +41,13 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
+    public Optional<BranchDTO> findById(int id) {
+        Optional<Branch> branchOptional = branchRepository.findById(id);
+        Branch branch = branchOptional.get();
+        return Optional.of(convertToDTO(branch));
+    }
+
+    @Override
     public String delete(int id) {
         Branch branch = branchRepository.findById(id)
                 .orElseThrow(()-> new BranchNotFoundException("Sucursal no encontrada con el id "+id));
@@ -65,6 +72,7 @@ public class BranchServiceImpl implements BranchService {
 
     private Branch convertToDomain(BranchDTO branchDTO) {
         Branch branch = new Branch();
+        branch.setBranchId(branchDTO.getBranchId());
         branch.setBranchName(branchDTO.getBranchName());
         branch.setBranchCountry(branchDTO.getBranchCountry());
         return branch;
