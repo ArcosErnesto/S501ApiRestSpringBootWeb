@@ -15,10 +15,12 @@ public class FlowerDTO {
     private String flowerCountry;
     private String flowerType;
 
-    private static final List<String> EU_COUNTRIES = List.of("Austria", "Belgica", "Bulgaria", "Croacia", "Chipre", "Republica Checa",
-            "Dinamarca", "Estonia", "Finlandia", "Francia", "Alemania", "Grecia", "Hungria", "Irlanda",
-            "Italia", "Letonia", "Lituania", "Luxemburgo", "Malta", "Paises Bajos", "Polonia", "Portugal",
-            "Rumania", "Eslovaquia", "Eslovenia", "España", "Suecia");
+    private static final List<String> EU_COUNTRIES = List.of(
+            "Austria", "Bélgica", "Bulgaria", "Croacia", "Chipre", "República Checa",
+            "Dinamarca", "Estonia", "Finlandia", "Francia", "Alemania", "Grecia", "Hungría", "Irlanda",
+            "Italia", "Letonia", "Lituania", "Luxemburgo", "Malta", "Países Bajos", "Polonia", "Portugal",
+            "Rumanía", "Eslovaquia", "Eslovenia", "España", "Suecia"
+    );
 
     public void determineTypeBranch() {
         if (EU_COUNTRIES.contains(flowerCountry)) {
