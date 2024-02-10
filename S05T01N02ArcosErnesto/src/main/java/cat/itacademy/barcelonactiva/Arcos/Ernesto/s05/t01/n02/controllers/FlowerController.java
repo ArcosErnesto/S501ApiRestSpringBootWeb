@@ -36,8 +36,8 @@ public class FlowerController {
     })
     @PostMapping("/add")
     public ResponseEntity<FlowerDTO> add(@RequestBody FlowerDTO flowerDTO) {
-        FlowerDTO newBranch = flowerService.add(flowerDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newBranch);
+        FlowerDTO newFlower = flowerService.add(flowerDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newFlower);
     }
 
     @Operation(
@@ -51,8 +51,8 @@ public class FlowerController {
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<Optional<FlowerDTO>> update(@PathVariable int id, @RequestBody FlowerDTO flowerDTO){
-        Optional<FlowerDTO>  updatedBranch= flowerService.update(id, flowerDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(updatedBranch);
+        Optional<FlowerDTO>  updatedFlower= flowerService.update(id, flowerDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updatedFlower);
     }
 
     @Operation(
